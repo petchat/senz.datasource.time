@@ -1,6 +1,6 @@
 {
-    "name": "Senz-Processing-Cloud",
-    "description": "Cloud Code project.",
+    "name": "Senz-datasource-time",
+    "description": "It's a cloud service which offers time query.",
     "version": "0.0.1",
     "private": true,
     "dependencies": {
