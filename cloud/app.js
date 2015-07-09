@@ -20,10 +20,10 @@ app.get('/today', function(req, res) {
 });
 
 app.get("/timeInfo", function (req, res){
-    var timestamp_list = req.query.timestampList;
+    var timestamp_list = req.query.timestampList.split(",");
     var result         = [];
     timestamp_list.forEach(function (timestamp){
-        var date = new Date(timestamp);
+        var date = new Date(parseInt(timestamp));
         var res  = calendar.Day(date.getFullYear(), date.getMonth() + 1, date.getDate());
         result.push(res);
     });
