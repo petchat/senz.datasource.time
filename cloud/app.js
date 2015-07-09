@@ -14,9 +14,20 @@ app.get('/hello', function(req, res) {
 });
 
 app.get('/today', function(req, res) {
-  thismoment = new Date();
-  result = calendar.Day(thismoment.getFullYear(), thismoment.getMonth() + 1, thismoment.getDate());
-  res.json(result);
+    var thismoment = new Date(),
+        result = calendar.Day(thismoment.getFullYear(), thismoment.getMonth() + 1, thismoment.getDate());
+    res.json(result);
+});
+
+app.get("/timeInfo", function (req, res){
+    var timestamp_list = req.query.timestampList;
+    var result         = [];
+    timestamp_list.forEach(function (timestamp){
+        var date = new Date(timestamp);
+        var res  = calendar.Day(date.getFullYear(), date.getMonth() + 1, date.getDate());
+        result.push(res);
+    });
+    res.json(result);
 });
 
 // 最后，必须有这行代码来使 express 响应 HTTP 请求
