@@ -35,20 +35,17 @@ var getDayType = function (year, month, day){
 };
 
 var getWeekDay = function (year, month, day){
-    var date = new Date();
-    date.setFullYear(year);
-    date.setMonth(month - 1);
-    date.setDate(day);
-    return {'week_day': date.getDay()};
+    var the_day  = new Date(year, month, day, 0, 0, 0, 0);
+    return {'week_day': the_day.getDay()};
 };
 
 // Get today's infomation.
 exports.Day = function (year, month, day){
-    var Day    = new Object();
-    day_type   = getDayType(year, month, day);
+    var Day    = {};
+    //day_type   = getDayType(year, month, day);
     week_day   = getWeekDay(year, month, day);
     lunar_info = getDayLunarInfo(year, month, day);
-    underscore.extend(Day, day_type);
+    //underscore.extend(Day, day_type);
     underscore.extend(Day, week_day);
     underscore.extend(Day, lunar_info);
     return Day;
